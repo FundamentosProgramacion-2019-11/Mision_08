@@ -64,6 +64,9 @@ def formarNombreUsuario(nombre, apellido, matricula):
     matricula = str(matricula)
     nom = nombre[:3:]
     ape = apellido[:3:]
+    # Aqui tomé como premisa que la matricula contiene 8 dígitos como escribió en el pdf, aunque mencionó 7 en la descripción. 
+    # Si consideramos que fueran 7 digitos nada mas el codigo sería el siguiente7
+    # mat = matricula[4::]
     mat = matricula[5::]
     usuario = nom + ape + mat
     print(usuario)
