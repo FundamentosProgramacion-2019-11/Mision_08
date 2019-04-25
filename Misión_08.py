@@ -3,17 +3,16 @@
 
 # Función que recibe una cadena y luego regresa otra cadena con las mayúsculas y minúsculas combinadas.
 def combinarLetras(cadena):
-    contador = 1
-    acumulador = ""
-    cadena.lower()
+    contarLetras = 1
+    acumularLetras = ""
     for n in cadena:
-        if n == 1:
+        if contarLetras == 1:
             n = n.upper()
-        elif n == 0:
+        elif contarLetras == 0:
             n = n.lower()
-        acumulador = acumulador + n
-        contador =- contador
-    return acumulador
+        contarLetras =- contarLetras
+        acumularLetras = acumularLetras + n
+    return acumularLetras
 
 
 # Esta función recibe una cadena y luego regresa True si la cadena contiene todas las vocales y de lo contrario False.
