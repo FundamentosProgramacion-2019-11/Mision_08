@@ -1,64 +1,61 @@
 # Autor: Juan Carlos Flores García A01376511. Grupo 02.
+# Descripción: Programa que genera figuras, realiza operaciones, e imprime un menu con diferentes opciones a elegir.
 
-# Programa que muestra un menu con 3 opciones: Calcular residuo y cociente de divisiones, encontrar el número mayor de
-# una serie de números y salir del menu.
+def combinarLetras(cadena):
+    acumulador = ""
+    str(cadena)
+    cadena.lower()
+    for n in cadena:
+        if(n % 2) != 0:
+            letra = n.upper()
+            acumulador = acumulador + letra
+    return acumulador
 
-
-# Esta función calcula el residuo y cociente de una división y luego lo imprime.
-def probarDivisiones(dividendo, divisor):
-    residuo = dividendo
-    cociente = 0
-    while (divisor <= residuo):
-        residuo -= divisor
-        cociente += 1
-
-    print(dividendo, "/", divisor, "=", cociente, ", sobra", residuo)
-
-
-# Esta función encuentra el mayor de una serie de números y después imprime ese número.
-def encontrarMayor():
-    serieNumerica = 0
-    numeroMayor = 0
-    while (serieNumerica != -1):
-        serieNumerica = int(input("Teclea un número [-1 para salir]: "))
-        if serieNumerica < -1:
-            print("No hay valor mayor")
-        elif serieNumerica > numeroMayor:
-            numeroMayor = serieNumerica
-    if numeroMayor == 0:
-        print("No hay valor mayor")
-    else:
-        print("El mayor es", numeroMayor)
+def contieneLasVocales(cadena):
+    for n in cadena:
+        n.upper()
+        if "a" in cadena and "e" in cadena and "i" in cadena and "o" in cadena and "u" in cadena:
+            return True
+        else:
+            return False
 
 
-# Esta función imprime las opciones del menu para elegir la opción deseada.
-def leerOpcionMenu():
-    print("Misión 07. Ciclos while")
-    print("Autor: Juan Carlos Flores García")
-    print("Matrícula: A01376511")
-    print("1. Calcular divisiones")
-    print("2. Encontrar el mayor")
-    print("3. Salir")
-    opcion = int(input("Teclea tu opción: "))
-    return opcion
+def formarNombreUsuario(nombre, apellido, matricula):
+    parte1 = nombre[0:3]
+    parte2 = apellido[0:3]
+    parte3 = matricula[4:7]
+    nombreUsuario = parte1 + parte2 + parte3
+    return nombreUsuario.lower()
 
 
-# Función principal que se encarga de mostrar el menu y llamar al resto de las funciones.
+def esCorrecto(nombre):
+    listaNombre = nombre.split()
+    for nombre in listaNombre:
+        mayuscula = nombre[0:1]
+        minuscula = nombre[1]
+        if minuscula.upper() or mayuscula.islower():
+            return True
+        else:
+            return False
+
+
+
 def main():
-    opcion = leerOpcionMenu()
-    while opcion != 3:
-        if opcion == 1:
-            dividendo = int(input("Dividendo: "))
-            divisor = int(input("Divisor: "))
-            probarDivisiones(dividendo, divisor)
-        elif opcion == 2:
-            print("Teclea una serie de números para encontrar el mayor.")
-            encontrarMayor()
-        elif opcion >= 0 or opcion < 3:
-            print("ERROR, teclea 1, 2 o 3")
-        opcion = leerOpcionMenu()
-    print("Gracias por usar este programa, regresa pronto.")
+    #combinar = combinarLetras("HolaMundo")
+    #print(combinar)
+
+    vocal = input("Ingresa la palabra: ")
+    print(contieneLasVocales(vocal))
+
+    nombreUsuario = input("Ingresa tu nombre: ")
+    apellidoUsuario = input("Ingresa tu apellido paterno: ")
+    matriculaUsuario = input("Ingresa tu matrícula de 7 dígitos: ")
+    cuentaUsuario = formarNombreUsuario(nombreUsuario, apellidoUsuario, matriculaUsuario)
+    print(cuentaUsuario)
+
+    nombre = input("Ingresa tu primer nombre y tus dos apellidos: ")
+    nombreCorrecto = esCorrecto(nombre)
+    print(nombreCorrecto)
 
 
-# Llamada a la función principal.
 main()
