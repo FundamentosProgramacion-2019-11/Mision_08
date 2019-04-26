@@ -11,7 +11,7 @@ def combinarLetras(cadena):
             contador += numLetra.upper()
         else:
             contador += numLetra.lower()
-    print(contador)
+    return contador
 
 
 
@@ -52,16 +52,17 @@ def esCorrecto(cadena2):
     cadena3 = cadena2
     cadena4 = cadena2.title()
     if cadena4 == cadena2:
-        return "True"
+        return True
     else:
-        return "False"
+        return False
 
 
 
 def formarNombreUsuario(nombre, apellido, matricula):
+    Matricula = str(matricula)
     nombre2 = nombre[:3:]
     apellido2 = apellido[0:3:]
-    matricula2 = matricula[5:len(matricula):]
+    matricula2 = Matricula[4:len(Matricula):1]
     usuario = nombre2 + apellido2 + matricula2
     usuario2 = usuario.lower()
     return usuario2
@@ -74,37 +75,22 @@ def contieneLasVocales(cadena):
     cadena2 = cadena.lower()
 
     if "a" in cadena2 and "e" in cadena2 and "i" in cadena2 and "o" in cadena2 and "u" in cadena2:
-        return "True"
+        return True
     else:
-        return "False"
-
-
-def esValido(password):
-    if len(password) >= 8:
-        for x in password:
-            if x.isupper():
-                for x in password:
-                    if x.lower():
-                        for x in password:
-                            if not x.isalnum():
-                                for x in password:
-                                    if x.isdigit():
-                                        if password[0].isalpha():
-                                            return True
+        return False
 
 
 
 def main():
-    nombre = "Roberto"
-    apellido = "Martínez"
-    matricula = "12345678"
+    nombre = "john"
+    apellido = "DOE"
+    matricula = 12345678
     password = "Abcd-123"
-    combinarLetras("Cesar Guzman")
-    print(contieneLasVocales("Abuelito"))
+    print(combinarLetras("Cesar Guzman"))
+    print(contieneLasVocales("Aguascalientes"))
     print(formarNombreUsuario(nombre, apellido, matricula))
-    print(esCorrecto("Cesar GUzMaN Guadarrama"))
+    print(esCorrecto("AnA López ALVAREZ"))
     print(traducirTelefono("01800-VOY-BIEN"))
-    print(esValido(password))
 
 
 
