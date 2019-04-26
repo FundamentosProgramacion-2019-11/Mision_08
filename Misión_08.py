@@ -7,9 +7,14 @@ def main(): #recibe los parámetros necesarios para las funciones
     print(combinarLetras(cadena))
     vocales=input("Teclea la cadena para evaluar sus vocales: ")
     print(contieneLasVocales(vocales))
-    correrParte3() #corre una función que recibe los tres parámetros necesarios para la siguiente función
-    nombre=input("Checar mayúsculas. Teclea un nombre y dos apellidos: ")
-    print(esCorrecto(nombre))
+    #Función 3
+    print("Formación de un usuario.")
+    nombre = input("Teclea el nombre: ")
+    paterno = input("Teclea el apellido paterno: ")
+    matricula = input("Teclea la matrícula sin A0")
+    print(formarNombreUsuario(nombre, paterno, matricula))
+    nom=input("Checar mayúsculas. Teclea un nombre y dos apellidos: ")
+    print(esCorrecto(nom))
     telefono=input("Teclea un teléfono en el formato 01800-XXX-XXXX: ")
     print(traducirTelefono(telefono))
     passw=input("Teclea tu contraseña para validar: ")
@@ -36,21 +41,12 @@ def contieneLasVocales(cadena):
     return('a' in minusculas and 'e' in minusculas and 'i' in minusculas and 'o' in minusculas and 'u' in minusculas)
 #Devuelve el resultado booleano de evaluar si a, e, i, o, y u están dentro de la cadena ingresada.
 
-
-#FUNCIÓN 3 (dos funciones)
-def correrParte3(): #recibe los parámetros que se pasan a la función formarNombreUsuario
-    print("Formación de un usuario.")
-    nombre=input("Teclea el nombre: ")
-    paterno=input("Teclea el apellido paterno: ")
-    matricula=input("Teclea la matrícula sin A0")
-    print(formarNombreUsuario(nombre,paterno,matricula))
-
-
+#FUNCIÓN 3
 def formarNombreUsuario(n,a,m):
     usuario="" #Acumulador de cadena
     p1=n[:3] #Toma los caracteres desde el inicio hasta el tercer caracter del nombre
     p2=a[:3] #Toma los caracteres desde el inicio hasta el tercer caracter del apellido
-    inicioMatricula=m[:4] #Toma los 4 primeros caracteres de la matrícula
+    inicioMatricula=str(m)[:4] #Toma los 4 primeros caracteres de la matrícula
     divisor=int(inicioMatricula+'000') #Suma tres ceros al inicio de la matrícula y lo convierte en un número entero
     finMat=int(m)%(divisor) #módulo de la matrícula entre el inicio de la matrícula con tres ceros, nos devuelve los últimos 3 dígitos (el residuo).
     #Para arreglar el problema si el usuario tiene una matrícula con un 0 en el quinto y/o sexto caracter:
