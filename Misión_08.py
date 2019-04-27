@@ -1,6 +1,5 @@
-# Autor: Mario Hernández Cárdenas, A01375869
-# Misión_08, Tarea sobre cadenas
-
+# Autor: Mario Hernández Cárdenas
+# Misión 08, Cadenas
 
 def combinarLetras(cadena):
     cadenaMayusculas = cadena.upper()
@@ -14,7 +13,10 @@ def combinarLetras(cadena):
         cadenaMinusModificada = cadenaModificada.lower()
         for letra in range(0, len(cadenaModificada), 2):
             palabra = palabra + cadenaMayusculas[letra] + cadenaMinusModificada[letra + 1]
-    print(palabra)
+    digitos = len(palabra)
+    if palabra[digitos-1].isspace():
+        palabra = palabra[:digitos-1:]
+    return palabra
 
 
 def contieneLasVocales(cadena):
@@ -64,12 +66,10 @@ def formarNombreUsuario(nombre, apellido, matricula):
     matricula = str(matricula)
     nom = nombre[:3:]
     ape = apellido[:3:]
-    # Aqui tomé como premisa que la matricula contiene 8 dígitos como escribió en el pdf, aunque mencionó 7 en la descripción. 
-    # Si consideramos que fueran 7 digitos nada mas el codigo sería el siguiente7
-    # mat = matricula[4::]
-    mat = matricula[5::]
+    mat = matricula[4::]
     usuario = nom + ape + mat
     print(usuario)
+    return usuario
 
 
 def esCorrecto(nombre):
@@ -129,6 +129,7 @@ def traducirTelefono(numero):
             if numero in letra:
                 numeroBien += "-"
     print(numeroBien)
+    return numeroBien
 
 
 # EXTRA
@@ -159,8 +160,15 @@ def esValido(contrasena):
 
     # 5. Comienza con una letra
     for caracter in contrasena[0]:
-        if not caracter.isnumeric():
+        caracteresEspeciales = (
+            "[", "@", "_", "!,", "#", "$", "%", "^", "&", "*", "()", "<", ">", "?", "/", "|", "}", "{", "~", ":", "]")
+        numeroCaracteresEspeciales = 0
+        for caracterEspecial in caracteresEspeciales:
+            if caracter in caracterEspecial:
+                numeroCaracteresEspeciales += 1
+        if not caracter.isnumeric() and numeroCaracteresEspeciales == 0:
             reglasCumplidas += 1
+        print(numeroCaracteresEspeciales)
 
     # 6. No contiene dígitos consecutivos
     vezSeparado = 0
@@ -183,48 +191,11 @@ def esValido(contrasena):
     numerosConsecutivos = numeroAntecesor + segundoNumero
     if not numerosConsecutivos in contrasena:
         reglasCumplidas += 1
-
     # Comprueba que todas las reglas se hayan cumplido
+    print(reglasCumplidas)
     if reglasCumplidas == 6:
         print(True)
         return True
     else:
         print(False)
         return False
-
-
-# Todas las pruebas que hice
-'''
-# Par e impar
-combinarLetras("Hola mundo")
-combinarLetras("Hola como estas")
-
-
-contieneLasVocales("Monterrey")
-contieneLasVocales("Abuelitos")
-contieneLasVocales("reumático")
-contieneLasVocales("escuálido")
-
-
-formarNombreUsuario("Roberto", "Martínez", 12345678)
-formarNombreUsuario("Mario", "Hernández", 1375869)
-
-
-esCorrecto("Roberto Martínez Román")
-esCorrecto("roberto MARtinez RoMan")
-
-
-# 01-800-XXX-XXXX
-# Como nunca encontré la solución a poner el número como entero y cadena, inmediatamente le mandé el número como cadena
-traducirTelefono("01800-VOY-BIEN")
-traducirTelefono("01800-ADG-JMPT")
-traducirTelefono("01800-DGJ-MPTZ")
-
-
-esValido("Abcd-7635")   # True
-esValido("abcd1936")    # False, falta carácter especial
-esValido("1513-Abdc")   # False, no empieza con letra
-esValido("A123-bcgsd")  # False, tiene números consecutivos
-esValido("aBcd-7418")   # True
-esValido("Abc-1479")    # True
-'''
