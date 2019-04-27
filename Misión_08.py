@@ -23,7 +23,7 @@ def combinacionLetras(palabra):
 def combinarLetras(palabra):
     if len(palabra) % 2 != 0:
         palabraEnPar = palabra + " "
-        return combinacionLetras(palabraEnPar)
+        return combinacionLetras(palabraEnPar)[:-1]
     else:
         return combinacionLetras(palabra)
 
@@ -107,7 +107,7 @@ def traducirTelefono(telefono):
         for letra in guion:
             if letra in caracter:
                 telefonoTraducido += "-"
-    return telefonoTraducido
+    return "01800" + telefonoTraducido
 
 
 def esValido(password):
@@ -195,7 +195,7 @@ def esValido(password):
 
 
 # 01-800-XXX-XXXX
-print("01800" + traducirTelefono("01800-VOY-BIEN"))
+#print("01800" + traducirTelefono("01800-VOY-BIEN"))
 
 
-print(esValido("Abcd-7635"))
+#print(esValido("Abcd-7635"))
