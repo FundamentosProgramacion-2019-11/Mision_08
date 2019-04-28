@@ -13,11 +13,16 @@ def combinarLetras(cadena):
 
 def contieneLasVocales(cadena):
     cadenaMayus = cadena.upper()
-    if "A" in cadenaMayus and "E" in cadenaMayus and "I" in cadenaMayus and "O" in cadenaMayus and "U":
+    a = cadenaMayus.count("A")
+    e = cadenaMayus.count("E")
+    i = cadenaMayus.count("I")
+    o = cadenaMayus.count("O")
+    u = cadenaMayus.count("U")
+    if a==1 and e==1 and i==1 and o==1 and u==1:
         return True
     else:
         return False
-
+    
 def formarNombreUsuario(nombre, apellido, matricula):
     strmatricula = str(matricula)
     nombreUno = nombre.lower()
