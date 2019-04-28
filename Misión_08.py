@@ -20,25 +20,21 @@ def combinarLetras(cadena):
 
 
 def contieneLasVocales(cadena):
-     if cadena.find("a") != -1 or cadena.find("A") != -1:
-         if cadena.find("e") != -1 or cadena.find("E") != -1:
-             if cadena.find("i") != -1 or cadena.find("I") != -1:
-                 if cadena.find ("o") != -1 or cadena.find("O") != -1:
-                     if cadena.find ("u") != -1 or cadena.find("U") != -1:
-                         return True
-     else:
+    if (cadena.find("e") != -1 or cadena.find("E") != -1) and (cadena.find("i") != -1 or cadena.find("I") != -1) and (cadena.find ("o") != -1 or cadena.find("O") != -1) and (cadena.find ("u") != -1 or cadena.find("U") != -1):
+        return True
+    else:
          return False
 
 
 
 def formarNombreUsuario(Nombre, Apellido, Matricula):
+    matricula1 = str(Matricula)
     nombre = Nombre[0:3:1]
     apellido = Apellido[0:3:1]
-    matricula = Matricula[len(Matricula)-3:len(Matricula):1]
+    matricula = matricula1[len(matricula1)-3:len(matricula1):1]
     NombreUsuario = nombre + apellido + matricula
     UsuarioMinusculas = NombreUsuario.lower()
     return UsuarioMinusculas
-
 
 
 
@@ -167,13 +163,13 @@ def esValido(Password):
 def main():
     combinarLetras("Hola Mundo")
     print(combinarLetras("Hola Mundo"))
-    contieneLasVocales("Abuelito")
+    contieneLasVocales("aeeeeeeuuuuu")
     print(contieneLasVocales("Abuelito"))
-    Nombre = "Diego"
-    Apellido = "Elizalde"
-    Matricula = int("12345678")
-    formarNombreUsuario(Nombre, Apellido, str(Matricula))
-    print(formarNombreUsuario(Nombre, Apellido, str(Matricula)))
+    Nombre = "Roberto"
+    Apellido = "MArtinez"
+    Matricula = int("1234567")
+    formarNombreUsuario(Nombre, Apellido, Matricula)
+    print(formarNombreUsuario(Nombre, Apellido, Matricula))
     NombrePersona = "Diego Elizalde Uriarte"
     esCorrecto(NombrePersona)
     print(esCorrecto(NombrePersona))
@@ -192,4 +188,4 @@ def main():
 
 
 
-main()
+main
