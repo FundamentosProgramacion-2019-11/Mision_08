@@ -23,20 +23,21 @@ def contieneLasVocales(cadena):
     o = "o"
     u = "u"
     if a in palabra and e in palabra and i in palabra and o in palabra and u in palabra:
-        print("True")
+        return True
     else:
-        print("False")
+        return False
 
 #Ejercicio 3
-def formarNombreUsuario(nombre, apellido,matri):
-    nombre= nombre.lower()
+def formarNombreUsuario(nombre, apellido,matricula):
+    nombre = nombre.lower()
     apellido= apellido.lower()
 
-    nom= nombre[:3:]
-    ape= apellido[:3:]
-    mat= matri[-3::]
-    formar= nom + ape + mat
-    print("Tu nombre de Usuario es", formar)
+    nom = nombre[:3:]
+    ape = apellido[:3:]
+    mat = str(matricula)[-3::]
+
+    formar = nom + ape + mat
+    return formar
 
 #Ejercicio 4
 def esCorrecto(nombre):
@@ -48,9 +49,9 @@ def esCorrecto(nombre):
         if mayus.isupper() and minus.islower():
             condicion += 1
             if condicion == 3:
-                print("True")
+                return True
         else:
-            print("False")
+            return False
 
 #Ejercicio 5
 def traducirTelefono(telefono):
@@ -76,7 +77,7 @@ def traducirTelefono(telefono):
         if digito == "-":
             num = num + "-"
     traduccion = "01800" + num
-    print(traduccion)
+    return traduccion
 
 #Ejercicio Extra
 def esValido(clave):
@@ -107,9 +108,9 @@ def esValido(clave):
 
     #Resultado
     if valido == 7:
-        print("True")
+        return True
     else:
-        print("False")
+        return False
 
 
 
@@ -121,25 +122,32 @@ def main():
 
     print("Comprueba si tu palabra contiene todas las vocales: ")
     texto = input("Teclea tu palabra: ")
-    contieneLasVocales(texto)
+    vocales= contieneLasVocales(texto)
+    print(vocales)
 
     print("Forma tu nombre de usuario: ")
     nombre = input("Teclea tu nombre: ")
     apellido = input("Teclea tu apellido: ")
-    matri = input("Teclea tu matrícula(7 dígitos): ")
-    formarNombreUsuario(nombre, apellido, matri)
+    matricula = input("Teclea tu matrícula(7 dígitos): ")
+    usuario= formarNombreUsuario(nombre, apellido, matricula)
+    print(usuario)
 
     print("Comprueba si tu nombre cumple con las reglas de las mayúsculas: ")
     nombre = input("Ingresa tu nombre completo: ")
-    esCorrecto(nombre)
+    reglasM = esCorrecto(nombre)
+    print(reglasM)
 
     print("Traduce el número: ")
     telefono = input("Ingresa el número de teléfono en el formato 01800 - XXX - XXXX : ")
-    traducirTelefono(telefono)
+    traduccion = traducirTelefono(telefono)
+    print(traduccion)
+
 
     print("Comprueba si tu contraseña es válida: ")
     contra = input("Ingresa tu contraseña: ")
-    esValido(contra)
+    validez = esValido(contra)
+    print(validez)
+
 
 
 main()
