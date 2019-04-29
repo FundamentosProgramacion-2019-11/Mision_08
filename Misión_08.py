@@ -1,17 +1,15 @@
-#Karimn Daniel Hernández Castorena
-#Programa que permite al usuario realizar diferentes acciones.
+# Karimn Daniel Hernández Castorena
+# Programa que permite al usuario realizar diferentes acciones.
 
-def combinarLetras(cadena):
-    contador = 1
-    acumulador = ""
-    for a in cadena:
-        if contador == 0:
-            a = a.lower()
-        elif contador == 1:
-             a = a.upper()
-        acumulador = acumulador + a
-        contador = - contador
-    return acumulador
+def combinarLetras(c):
+    acu = ""
+    for a in range(len(c)):
+        if a % 2 == 0:
+            acu += c[a].upper()
+        else:
+            acu += c[a].lower()
+    print()
+    return acu
 
 
 def contieneLasVocales(cadena):
@@ -22,9 +20,11 @@ def contieneLasVocales(cadena):
     o = "o" or "ó"
     u = "u" or "ú"
     if a in xx and e in xx and i in xx and o in xx and u in xx:
-        print("Cierto, cuenta con las cinco vocales.")
+        print()
+        return True
     else:
-        print("Falso, no cuenta con las cinco vocales.")
+        print()
+        return False
 
 
 def formarNombreUsuario(nombre, apellido, matricula):
@@ -33,7 +33,7 @@ def formarNombreUsuario(nombre, apellido, matricula):
     m = str(matricula)
     y = n[0:3] + a[0:3] + m[4:7]
     print()
-    print("Tu gamertag es:", y)
+    return y
 
 
 def esCorrecto(nom):
@@ -48,43 +48,48 @@ def esCorrecto(nom):
         else:
             contadorincorrecto += 1
     if contadorcorrecto == 3:
-        print("Correcto. La regla si se respeta.")
+        print()
+        return True
     elif contadorincorrecto >= 1:
-        print("Incorrecto. La regla no se respeta.")
-
+        print()
+        return False
 
 
 def traducirTelefono(tel):
-    acumulador = ""
+    x = ""
+    tel = tel.lower()
     for letras in tel:
         if "a" == letras or "b" == letras or "c" == letras:
-            acumulador = acumulador + "2"
+            x = x + "2"
         elif "d" == letras or "e" == letras or "f" == letras:
-            acumulador = acumulador + "3"
+            x = x + "3"
         elif "g" == letras or "h" == letras or "i" == letras:
-            acumulador = acumulador + "4"
+            x = x + "4"
         elif "j" == letras or "k" == letras or "l" == letras:
-            acumulador = acumulador + "5"
+            x = x + "5"
         elif "m" == letras or "n" == letras or "o" == letras:
-            acumulador = acumulador + "6"
+            x = x + "6"
         elif "p" == letras or "q" == letras or "r" == letras or "s" == letras:
-            acumulador = acumulador + "7"
+            x = x + "7"
         elif "t" == letras or "u" == letras or "v" == letras:
-            acumulador = acumulador + "8"
+            x = x + "8"
         elif "w" == letras or "x" == letras or "y" == letras or "z" == letras:
-            acumulador = acumulador + "9"
-    print("01800-", acumulador)
+            x = x + "9"
+        elif "-" == letras:
+            x = x + "-"
+    juas = "01800" + x
+    return juas
 
 
 def main():
     print()
-    cadena = (input("Teclea una palabra para combinarla entre mayúsculas y minúsculas: "))
-    print(combinarLetras(cadena))
+    c = (input("Teclea una palabra para combinarla entre mayúsculas y minúsculas: "))
+    print(combinarLetras(c))
     print()
     print("-------------------------------------------")
     print()
     v = (input("Teclea una palabra y te diré si contiene todas las vocales: "))
-    contieneLasVocales(v)
+    print(contieneLasVocales(v))
     print()
     print("-------------------------------------------")
     print()
@@ -101,16 +106,18 @@ def main():
     print("(Para que la regla se cumpla la primera letra de cada palabra debe ser mayúscula)")
     print()
     nom = str(input("¿Cómo te llamas? "))
-    esCorrecto(nom)
+    print(esCorrecto(nom))
     print()
     print("-------------------------------------------")
     print()
-    print("Traduciremos tu teléfono." )
+    print("Traduciremos tu teléfono.")
     print("Introduce dos palabras, una de tres letras y otra de cuatro.")
     tel = str(input("Teclea las palabras (01-800-XXX-XXXX): 01-800-"))
-    traducirTelefono(tel)
+    print()
+    print(traducirTelefono(tel))
     print()
     print("-------------------------------------------")
     print()
+
 
 main()
