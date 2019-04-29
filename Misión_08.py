@@ -1,7 +1,7 @@
 # Autor: Yasmín Landaverde Nava
 # Descripción: ejercicios de cadenas
 
-# EJERCICIO NO.1
+# EJERCICIO 1
 def combinarLetras(cadena):
     combinacion = ""
     for i in range(0, len(cadena), 1):
@@ -12,8 +12,7 @@ def combinarLetras(cadena):
             combinacion += letra.lower()
     return combinacion
 
-
-# EJERCICIO NO.2
+# EJERCICIO 2
 def contieneLasVocales(palabra):
     palabraCorrecta = palabra.lower()
     vocales = 0
@@ -33,14 +32,16 @@ def contieneLasVocales(palabra):
     else:
         return False
 
-# EJERCICIO NO.3
+# EJERCICIO 3
 def formarNombreUsuario(nombre, apellido, matricula):
     nombre3 = nombre.lower()[0:3]
     apellido3 = apellido.lower()[0:3]
-    matricula3 = matricula[4:8]
-    return nombre3 + apellido3 + matricula3
+    matricula3 =str(matricula)
+    mat03 = (matricula3[4:8])
+    nombreUsuario =  nombre3 + apellido3 + mat03
+    return (nombreUsuario)
 
-# ERJERCICIO NO.4
+# EJERCICIO 4
 def esCorrecto(nombre):
     nombre = nombre.split()
     for palabra in nombre:
@@ -52,12 +53,13 @@ def esCorrecto(nombre):
                 return False
     return True
 
-# EJERCICIO NO. 5
+# EJERCICIO 5
 def traducirTelefono(numero):
     marcacion= numero.split("-")
     palabraCero = marcacion[0]
     palabraUno = marcacion[1]
     palabraDos = marcacion[2]
+    space = "-"
     digito = ""
 
     for valor in palabraUno:
@@ -98,23 +100,10 @@ def traducirTelefono(numero):
             digitoDos = digitoDos + "9"
 
 
-    print (palabraCero, "-", digito, "-", digitoDos)
+    final = palabraCero + space + digito + space + digitoDos
+    return final
 
 
-# EEJRCICIO EXTRA
-def esValido(contrasena):
-    validaciones = 0
-
-    if len(contrasena) >= 8:
-        validaciones += 1
-
-    if not contrasena.isalnum():
-        validaciones += 1
-
-    if validaciones == 2:
-        print ("es valido")
-    else:
-        print ("no")
 
 
 def main():
@@ -137,9 +126,8 @@ def main():
     print (error)
 
     numero = "01800-VOY-BIEN"
-    traducirTelefono(numero)
+    num = traducirTelefono(numero)
+    print (num)
 
-    contrasena = "asafgonweoi!AA"
-    esValido(contrasena)
 
 main()
