@@ -2,15 +2,13 @@
 # Programa que cumple la funcion de llamar cadenas y cambiar estas
 
 def combinarLetras(cadena):
-    contador = 1
     acumulador = ""
-    for letra in cadena:
-        if contador == 0:
-            letra = letra.lower()
-        elif contador == 1:
-            letra = letra.upper()
-        acumulador = acumulador + letra
-        contador = -contador
+    for letra in range(len(cadena)):
+        if letra%2== 0:
+            acumulador += cadena[letra].upper()
+        else:
+            acumulador += cadena[letra].lower()
+
     return acumulador
 
 
@@ -25,58 +23,68 @@ def contieneLasVocales(cadenaVocales):
 def formarNombreUsuario(nombre, apellidoPaterno, matrícula):
     nombre = nombre.lower()
     apellidoPaterno = apellidoPaterno.lower()
-    matrícula = matrícula.lower()
 
-    nombreUsuario = nombre[0:3] + apellidoPaterno[0:3] + matrícula[4:7]
+    nombreUsuario = nombre[0:3] + apellidoPaterno[0:3] + str(matrícula)[4:7]
     return nombreUsuario
 
 
 def esCorrecto(nombrePersona):
-    separar = nombrePersona.split()
-    for nombrePersona in separar:
-        letraInicial = nombrePersona[0:1]
-        letras = nombrePersona[1]
-        if letraInicial.islower() or letras.isupper():
-            return False
+    nombrePersona = nombrePersona.split()
+    contador= 0
+
+    for letra in nombrePersona:
+        mayuscula = letra[0:1]
+        minuscula = letra[1:]
+        if mayuscula.isupper() and minuscula.islower():
+            contador+=1
+            if contador == 3:
+                return True
         else:
-            return True
+            return False
 
 
 def traducirTelefono(numeroTelefono):
     acumulador = ""
+    numeroTelefono = numeroTelefono.upper()
+
     for numeros in numeroTelefono:
-        if "A" == numeros or "B" == numeros or "C" == numeros:
+        if numeros == "A" or numeros == "B" or numeros == "C":
             acumulador = acumulador + "2"
-        elif "D" == numeros or "E" == numeros or "F" == numeros:
+        if numeros == "D" or numeros == "E" or numeros == "F":
             acumulador = acumulador + "3"
-        elif "G" == numeros or "H" == numeros or "I" == numeros:
+        if numeros == "G" or numeros == "H" or numeros == "I":
             acumulador = acumulador + "4"
-        elif "J" == numeros or "K" == numeros or "L" == numeros:
+        if numeros == "J" or numeros == "K" or numeros == "L":
             acumulador = acumulador + "5"
-        elif "M" == numeros or "N" == numeros or "O" == numeros:
+        if numeros == "M" or numeros == "N" or numeros == "O":
             acumulador = acumulador + "6"
-        elif "P" == numeros or "Q" == numeros or "R" == numeros or "S" == numeros:
+        if numeros == "P" or numeros == "Q" or numeros == "R" or numeros == "S":
             acumulador = acumulador + "7"
-        elif "T" == numeros or "U" == numeros or "V" == numeros:
+        if numeros == "T" or numeros == "U" or numeros == "V":
             acumulador = acumulador + "8"
-        elif "W" == numeros or "X" == numeros or "Y" == numeros or "Z" == numeros:
+        if numeros == "W" or numeros == "X" or numeros == "Y" or numeros == "Z":
             acumulador = acumulador + "9"
-        print("01800-" + acumulador)
+        if numeros == "-":
+            acumulador= acumulador + "-"
+
+    numeroDeTelefono= "01800"+acumulador
+    return numeroDeTelefono
 
 
 def main():
-    cadena = input("Escribe una frase: ")
+    cadena = input("Escribe una frase y las letras se alternaran (mayusculas, minusculas): ")
     frase = combinarLetras(cadena)
     print(frase)
 
     print()
 
-    cadenaVocales = input("Escribe otra frase: ")
+    cadenaVocales = input("Escribe otra frase y te dire si esta tiene todas las vocales o no: ")
     tieneVocales = contieneLasVocales(cadenaVocales)
     print(tieneVocales)
 
     print()
 
+    print ("Se creara un nombre de usuario de acuerdo a tu nombre, apellido y matricula")
     nombre = input("Escribe tu nombre: ")
     apellidoPaterno = input("Escribe tu apellido aterno: ")
     matrícula = input("Escribe tu matricula: ")
@@ -85,13 +93,13 @@ def main():
 
     print()
 
-    nombrePersona = input("Escribe tu nombre y tu apellido: ")
-    nombrePersona = esCorrecto(nombrePersona)
-    print(nombrePersona)
+    nombrePersona = input("Escribe tu nombre y tu apellido y te dire si esta bien escrito o no: ")
+    nombreUsuario = esCorrecto(nombrePersona)
+    print(nombreUsuario)
 
     print()
 
-    numeroTelefono = input("Inserta un codigo de telefono: 01800-")
+    numeroTelefono = input("Inserta un codigo de telefono y se pasara a numeros (ejemplo: 01800-YADI-FUENTES): ")
     telefonoTraducido = traducirTelefono(numeroTelefono)
     print(telefonoTraducido)
 
