@@ -67,7 +67,6 @@ def formarNombreUsuario(nombre,apellidoPaterno,matricula):
 
 def esCorrecto(cadena):
     nuevacadena=cadena.split()
-    numeroDePalabras=len(nuevacadena)
     nombre1=nuevacadena[0]
     separacionNombre1=nombre1[0]
     restanteDelNombre1=nombre1[1:]
@@ -85,7 +84,7 @@ def esCorrecto(cadena):
         return False
 
 
-def traucirTelefono(cadena):
+def traducirTelefono(cadena):
     totalDeCaracteres=len(cadena)
     acumularTelefono=""
     for i in range (0,totalDeCaracteres):
