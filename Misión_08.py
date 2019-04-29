@@ -19,13 +19,24 @@ def combinarLetras(cadena):
 def contieneLasVocales(cadena2):
     #regresa TRUE si contiene todas la vocales, regresa FALSE si no es así
 
-    vocales = 'aeiouAEIOU'  #reconoce vocales en mayuscula y minuscula
+    todasVocales = 0    #contar que todas las vocales esten presentes
 
     for letra in cadena2:
-        if letra in vocales:
-            return True
-        else:
-            return False
+        if letra == "A" or letra == "a":
+            todasVocales += 1
+        elif letra == "E" or letra == "e":
+            todasVocales += 1
+        elif letra == "I" or letra == "i":
+            todasVocales += 1
+        elif letra == "O" or letra == "o":
+            todasVocales += 1
+        elif letra == "U" or letra == "u":
+            todasVocales += 1
+
+    if todasVocales == 5:
+        return True
+    else:
+        return False
 
 
 def formarNombreUsuario(nombre, apellido, matricula):
@@ -60,7 +71,7 @@ def esCorrecto(nombrePersona):
 def traducirTelefono(numeroTelefonico):
     #Recibe un número telefónico formato ("01800-XXX-XXX") "01800-VOY-BIEN" y regresa cadena del numero "01800-869-2436"
 
-    nuevoNumero = " "   #va acumulndo el número traducido
+    nuevoNumero = ""   #va acumulndo el número traducido
 
     for letra in numeroTelefonico:
         if letra == "A" or letra == "B" or letra == "C":
