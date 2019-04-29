@@ -9,7 +9,7 @@ def combinarLetras(cadena):
             myM += cadena[i].lower()
         else: #Si el indice es un numero IMPAR entonces la letra será minúscula
             myM += cadena[i].upper()
-    print(myM)
+    return myM
 
 
 #Ejercicio 2: En esta función, el usuario ingresa una palabra. Si esta contiene todas las vocales, imprimira True. False si no
@@ -33,9 +33,9 @@ def contieneLasVocales(cadena):
         if c == "u":
             numU += 1
     if numA >= 1 and numE >= 1 and numI >= 1 and numO >= 1 and numU >= 1: #Si aparecen todas las vocales al menos una vez, sera verdadero
-        print(True)
+        return True
     else:
-        print("False")
+        return False
 
 
 #Ejercicio 3: Esta función recibe un nombre, un apellido y una matrícula mayor a 3 digitos.
@@ -55,7 +55,7 @@ Error. La matrícula debe tener más de 3 digitos"""
         if (i >= 3): #Solo acepta una matricula mayor a 3 digitos
             m= strm[-3::] #El valor de m va a ser igual a los ultimos 3 digitos de la matrícula
     c += m
-    print(c)
+    return c
 
 
 #Ejercicio 4: Esta función recibe 1 nombre y 2 apellidos y regresa True si las reglas de mayúsculas están bien aplicadas, False en otro caso.
@@ -71,9 +71,9 @@ def esCorrecto(cadena):
         else:
             false += 1 #Se suman las veces que la palabra es falsa
     if true == 3: #Sera verdadero si es que las 3 palabras (nombre y los 2 apellidos) son correctas y la regla de mayúsculas está bien aplicada
-        print("True")
+        return True
     elif false >= 1: #Sera verdadero si es que alguna o todas las 3 palabras son incorrectas y la regla de mayúsculas no está bien aplicada
-        print("False")
+        return False
 
 
 #Ejercicio 5: En esta función, el usuario ingresa letras en el formato 01800-XXX-XXXX y la función lo traduce a digitos
@@ -100,8 +100,8 @@ def traducirTelefono(num):
             n = n+"8"
         if c == "W" or c == "X" or c == "Y" or c == "Z":
             n = n+"9"
-    numero = "01800-" + n
-    print(numero)
+    numero = "01800" + n
+    return numero
 
 #Ejercicio 6 EXTRA: Esta función regresa True si cumple con las reglas indicadas para ingresar una contraseña valida
 def esValido(password):
@@ -109,10 +109,9 @@ def esValido(password):
     cont = len(password)
     for i in range(cont): #La contraseña debe ser igual o mayor a 8 carácteres
         if (i >= 7):
-            long = "True"
+            return True
         else:
-            long = "False"
-    #print(long)
+            return False
 
     # Condición 2
     min = 0
@@ -123,30 +122,29 @@ def esValido(password):
         if c.isupper():
             may += 1 #Debe haber al menos 1 letra mayúscula
     if min >= 1 and may >= 1:
-        myM = "True" #si hay ina o más letras minúsculas y mayúsculas, sera verdadero
+        return True #si hay ina o más letras minúsculas y mayúsculas, sera verdadero
     else:
-        myM = "False"
-    #print(myM)
+        return False
 
     # Condición 3
     if not password.isalnum(): #Si la contraseña no solo se conforma por letras y numeros (cuenta con carácteres especiales), es verdadero
-        cEspecial = "True"
+        return True
     else:
-        cEspecial = "False"
+        return False
     #print(cEspecial)
 
     # Condición 4
     if not password.isdigit(): #Si no son solo numeros los que conforman la cadena
-        digito = "True"
+        return True
     else:
-        digito = "False"
+        return False
     #print(digito)
 
     # Condición 5
     if password[0].isalpha(): #El primer caracter debe ser una letra. Si sí, es verdadero.
-        pLetra = "True"
+        return True
     else:
-        pLetra = "False"
+        return False
     #print(pLetra)
 
     # Condición 6
@@ -154,39 +152,47 @@ def esValido(password):
     for i in range (0, c-1): #Se resta -1 para que la cadena no marque que esta fuera de rango
         if password[i].isdigit() and password[i+1].isdigit(): #Indica que los carácteres son digitos consecutivos
             if (int(password[i + 1])) == (int(password[i]) + 1): #señalamos que el segundo caracter es digito consecutivo delprimero
-                consecutivo = ("True") #Los digitos son consecutivos
+                return True #Los digitos son consecutivos
             else:
-                consecutivo = ("False")
+                return False
     #print(consecutivo)
 
     # Comprobación
-    if long == "True" and myM == "True" and cEspecial == "True" and digito == "True" and pLetra == "True" and consecutivo == "False":
-        print("True")
+    if long == True and myM == True and cEspecial == True and digito == True and pLetra == True and consecutivo == False:
+        return True
     else:
-        print("False")
+        return False
 
 
 def main():
     #Funcion1
     c = input("""Inserta una cadena. (Ejemplo: "Hola Mundo"): """)
-    combinarLetras(c)
+    ej1 = combinarLetras(c)
+    print(ej1)
     # Funcion2
     palabra = input("""Inserta una palabra. (Ejemplo: "Monterrey"): """)
-    contieneLasVocales(palabra)
+    ej2 = contieneLasVocales(palabra)
+    print(ej2)
     # Funcion3
     nombre = input("Ingresa el nombre del usuario: ")
     apellidoPaterno = input("Ingresa el apellido paterno del usuario: ")
     matrícula = int(input("Ingresa la matrícula del usuario. (Mayor a 3 digitos): "))
     formarNombreUsuario(nombre, apellidoPaterno, matrícula)
+    ej3 = formarNombreUsuario(nombre, apellidoPaterno, matrícula)
+    print(ej3)
     # Funcion4
     nombre = input("Ingresa 1 nombre y 2 apellidos sencillos: ")
-    esCorrecto(nombre)
+    ej4 = esCorrecto(nombre)
+    print(ej4)
     # Funcion5
     número = input("Ingresa un número telefónico en el formato 01800-XXX-XXXX. (Ej: 01800-VOY-BIEN) 01800-")
-    traducirTelefono(número)
+    ej5 = traducirTelefono(número)
+    print(ej5)
     # Funcion 6
     contraseña = input("Ingresa una contraseña: ")
-    esValido(contraseña)
+    ej6 = esValido(contraseña)
+    print(ej6)
 
 main()
+
 
