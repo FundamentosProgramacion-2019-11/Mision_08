@@ -2,21 +2,23 @@
 # Descripción: Misión 8 Cadena
 
 def combinarLetras(cadena):
-    palabra = "" # funciona de acomulador
-    posicionLetra = 1 # Se sumará y restará a si mismo dependiendo de si su posición da 1 o 0
+    palabra = ""  # funciona de acomulador
+    posicionLetra = 1  # Se sumará y restará a si mismo dependiendo de si su posición da 1 o 0
     for n in cadena:
-        if posicionLetra == 1: #Da la primera posición como 1, lo que hace que sea mayuscula
+        if posicionLetra == 1:  # Da la primera posición como 1, lo que hace que sea mayuscula
 
             n = n.upper()
+            posicionLetra = 0
 
         elif posicionLetra == 0:
 
             n = n.lower()
+            posicionLetra = 1
 
+        palabra = palabra + n  # escribe la letra
 
-        palabra = palabra + n # escribe la letra
-        posicionLetra =- posicionLetra # Convierte la posicionLetra a 0
-    print(palabra)
+    return palabra
+
 
 def contieneLasVocales(palabra):
     letraA = 0
@@ -27,72 +29,76 @@ def contieneLasVocales(palabra):
 
     for i in palabra:
         if i == "a" or i == "A":
-            letraA= letraA + 1
+            letraA = letraA + 1
         elif i == "e" or i == "E":
             letraE = letraE + 1
         elif i == "i" or i == "I":
-            letraI= letraI + 1
+            letraI = letraI + 1
         elif i == "o" or i == "O":
-            letraO= letraO + 1
+            letraO = letraO + 1
         elif i == "u" or i == "U":
-            letraU= letraU + 1
+            letraU = letraU + 1
 
     if letraA >= 1 and letraE >= 1 and letraI >= 1 and letraO >= 1 and letraU >= 1:
-        print("Tiene todas las vocales" )
+        return True
     else:
-        print("no tiene todas las vocales")
+        return False
+
 
 def formarNombreUsuario(nombreUsuario, apellidoUsuario, matriculaUsuario):
-    nombreUsuario = nombreUsuario.lower()  #El nombre y apellido los hace todos minúscula
+    nombreUsuario = nombreUsuario.lower()  # El nombre y apellido los hace todos minúscula
     apellidoUsuario = apellidoUsuario.lower()
     matriculaUsuario = str(matriculaUsuario)
-    print("Tu usuario es:", nombreUsuario[0:3], apellidoUsuario[0:3], matriculaUsuario[6:9])
+    usuario = nombreUsuario[0:3] + apellidoUsuario[0:3] + matriculaUsuario[4:]
+    print("Tu usuario es:", usuario)
+    return usuario
+
 
 def esCorrecto(persona):
     nombre = persona.split()
-    for x in nombre:
-        for y in x[0]:  #y es la primera letra
+    for nom in nombre:
+        for y in nom[0]:  # y es la primera letra
             if y.islower():
-                print("False. Las mayúsculas están mal posicionadas")
+                return False
+        for z in nom[1::]:
+            if z.isupper():
                 return False
 
 
-    print("True. Tus mayúsculas estan bien posicionadas.")
-    return True
+    else:
+        return True
 
+    # def traducirTelefono(telefono):
+    telefono = str(telefono)
 
-#def traducirTelefono(telefono):
-    telefono=str(telefono)
+    numerodos = ("A", "a", "B", "b", "C", "c")
+    numerotres = ("D", "d", "E", "e", "F", "f")
+    numerocuatro = ("G", "g", "H", "h", "I", "i")
+    numerocinco = ("J", "j", "K", "k", "L", "l")
+    numeroseis = ("M", "m", "N", "n", "O", "o")
+    numerosiete = ("P", "p", "Q", "q", "R", "r", "S", "s")
+    numeroocho = ("T", "t", "U", "u", "V", "v")
+    numeronueve = ("W", "w", "X", "x", "Y", "y", "Z", "z")
 
-    numerodos = A or a or B or b or C or c
-    numerotres = D or d or E or e or F or f
-    numerocuatro = G or g or H or h or I or i
-    numerocinco = J or j or K or k or L or l
-    numeroseis = M or m or N or n or O or o
-    numerosiete = P or p or Q or q or R or r or S or s
-    numeroocho = T or t or U or u or V or v
-    numeronueve = W or w or X or x or Y or y or Z or z
+    solonumeros = telefono[6:]
 
-    #No pude prof, perdon :(
+    for x in solonumeros:
+        if
 
+    # No pude prof, perdon :(
 
 
 def main():
     cadena = str(input("Teclea tu frase: "))
     palabra = str(input("Teclea tu palabra o frase y te diré si contiene todas las vocales: "))
-    nombreUsuario = str(input("Escribe tu primer nombre: "))
-    apellidoUsuario = str(input("Escribe tu apellido paterno: "))
-    matriculaUsuario = str(input("Teclea tu matrícula: "))
-    persona = str(input("Teclea un nombre y dos apellidos. Te diré si tus mayúsculas están bien posicionadas: "))
+    nombreUsuario = str(input("Escribe tu primer nombre:"))
+    apellidoUsuario = str(input("Escribe tu apellido paterno:"))
+    matriculaUsuario = str(input("Teclea tu matrícula:"))
+    persona = str(input("Teclea un nombre y dos apellidos. Te diré si tus mayúsculas están bien posicionadas:"))
     combinarLetras(cadena)
     contieneLasVocales(palabra)
     formarNombreUsuario(nombreUsuario, apellidoUsuario, matriculaUsuario)
     esCorrecto(persona)
-    #traducirTelefono()
+    # traducirTelefono()
 
 
-
-
-
-
-main()
