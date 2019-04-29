@@ -1,15 +1,17 @@
 #Autor: Mariana Teyssier Cervantes
-#Misión 08 - CADENAS
+#Misión 08 CORREGIDA - CADENAS
 
 
 def combinarLetras(cadena):
-    mayusculas = cadena.upper()
-    minusculas = cadena.lower()
-    combinar = " "
-    for letra in range(0, len(cadena), 2):
-        combinar = combinar + mayusculas[letra] + minusculas[letra +1]
+    combinar = ""
+    for i in range(len(cadena)):
+        letra = cadena[i]
+        if i==0 or i%2==0:
+            combinar += letra.upper()
+        else:
+            combinar += letra.lower()
 
-    print(combinar)
+    return combinar
 
 
 def contieneLasVocales(cadena):
@@ -41,23 +43,22 @@ def contieneLasVocales(cadena):
                 u+=1
 
     if a >=1 and e >=1 and i >=1 and o >=1 and u >=1:
-        print(True)
         return True
     else:
-        print(False)
         return False
 
 
 def formarNombreUsuario(nombre, apellido, matricula):
-    nombre = nombre.lower()
-    apellido = apellido.lower()
-    matricula = str(matricula)
-    n = nombre[:3:]
-    a = apellido [:3:]
-    m = matricula[4:]
-    usuario = n + a + m
-    print(usuario)
+    m = str(matricula)
+    n = nombre[0:3:1]
+    a = apellido [0:3:1]
 
+    m2 = m[len(m)-3:len(m):1]
+
+    usuario = n + a + m2
+    usuarioFinal = usuario.lower()
+
+    return usuarioFinal
 
 def esCorrecto(cadena):
     nombre = cadena.split()
@@ -70,7 +71,7 @@ def esCorrecto(cadena):
             if letra.isupper():
                 print(False)
                 return False
-    print(True)
+
     return True
 
 
@@ -116,16 +117,22 @@ def traducirTelefono(numeros):
         for numeros in guion:
             if numeros in letra:
                 numCompleto += "-"
-    print(numCompleto)
+
+    return numCompleto
 
 
 
 def main():
     combinarLetras("Hola Mundo")
+    print(combinarLetras("Hola Mundo"))
     contieneLasVocales("Abuelito")
+    print(contieneLasVocales("Abuelito"))
     formarNombreUsuario("Mariana", "Teyssier", 1745234)
+    print(formarNombreUsuario("Mariana", "Teyssier", 1745234))
     esCorrecto("Mariana Teyssier Cervantes")
+    print(esCorrecto("Mariana Teyssier Cervantes"))
     traducirTelefono("01800-VOY-BIEN")
+    print(traducirTelefono("01800-VOY-BIEN"))
 
 
 main()
