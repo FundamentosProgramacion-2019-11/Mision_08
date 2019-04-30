@@ -2,47 +2,47 @@
 #Aqui utilizaremos diferentes funciones para strings para resolver diferentes funciones
 
 def combinarLetras(palabra):
-    sin = " "
-    let = 0
+    cnt = ""
+    tot = 0
     for letra in palabra:
-        if let == 0:
-            sin = sin + letra.upper()
-            let == 1
-        elif let == 1:
-            sin = sin + letra.lower()
-        let = 0
-    return sin
+        if tot == 0:
+            cnt = cnt + letra.upper()
+            tot = 1
+        elif tot == 1:
+            cnt = cnt + letra.lower()
+            tot = 0
+    return cnt
 
-def contieneLasVocales(vocales):
-        if "a" and "e" and "i" and "o" and "u" in vocales:
-            print("TRUE")
-        else:
-            print("FALSE")
+def contieneLasVocales(vocal):
+    vocal1 = vocal.lower()
+    if (("a" in vocal1) == True) and (("e" in vocal1) == True) and (("i" in vocal1) == True) and (
+            ("o" in vocal1) == True) and (("u" in vocal1) == True):
+        return True
+    else:
+        return False
 
-def formarNombreUsuario(nom,ape,matri):
-    mat = matri[2:]
+def formarNombreUsuario(nombre,apellido,matricula):
+    nom = nombre
+    ape = apellido
+    mat = str(matricula)
+    mat1 = mat[4:]
     ape1 = ape[:3]
     nom2 = nom[:3]
     ape2 = ape1.lower()
     nomb = nom2.lower()
-    nuevo = nomb + ape2 + mat
-    return nuevo
+    nuevo = nomb + ape2 + mat1
+    return (nuevo)
 
-def esCorrecto(nom1,nom2,nom3):
-    prim = nom1[:1]
-    seg = nom2[:1]
-    ter = nom3[:1]
-    prim2 = nom1[1+1:]
-    seg2 = nom2[1+1:]
-    ter2 = nom3[1+1:]
-    if prim.isupper() and prim2.islower() and seg.isupper() and seg2.islower() and ter.isupper() and ter2.islower():
-        print("TRUE")
+def esCorrecto(nombrec):
+    nombrecom= nombrec.title()
+    if nombrec == nombrecom:
+        return True
     else:
-        print("FALSE")
+        return False
 
 def traducirTelefono(llamar):
     tel = llamar[6:]
-    base = "01800-"
+    base = "01800"
     for num in tel:
         for num in llamar:
             if (("A" in num) == True) or (("B" in num) == True) or (("C" in num) == True):
@@ -90,13 +90,11 @@ def main():
             matricula = input("Dame tu matrícula (Completa con el A0) : ")
             print(formarNombreUsuario(nombre, apellido, matricula))
         if opcion == 4:
-            n1 = input("Dime tu nombre: ")
-            n2 = input("Dime tu primer apellido: ")
-            n3 = input("Dime tu segundo apellido: ")
-            print(esCorrecto(n1, n2, n3))
+            nombrec = input("Dame tu nombre completo: ")
+            completo = esCorrecto(nombrec)
+            print(completo)
         if opcion == 5:
             men = input("Teléfonno: ")
             print(traducirTelefono(men))
 
 main()
-
