@@ -1,6 +1,6 @@
 #Rafael ROMERO bello
 #A01747730
-#mision8 fecha: 23/04/2019
+#mision8 fecha: 29/04/2019
 
 def combinarLetras(L):
     totalC=len(L)
@@ -16,75 +16,78 @@ def combinarLetras(L):
     return r
 
 
-
-def traducirTelefono(numero):
-    numero1 = numero.replace("A", "2")
-    numero2 = numero1.replace("B", "2")
-    numero3 = numero2.replace("C", "2")
-    numero4 = numero3.replace("D", "3")
-    numero5 = numero4.replace("E", "3")
-    numero6 = numero5.replace("F", "3")
-    numero7 = numero6.replace("G", "4")
-    numero8 = numero7.replace("H", "4")
-    numero9 = numero8.replace("I", "4")
-    numero10 = numero9.replace("J", "5")
-    numero11 = numero10.replace("K", "5")
-    numero12 = numero11.replace("L", "5")
-    numero13 = numero12.replace("M", "6")
-    numero14 = numero13.replace("N", "6")
-    numero15 = numero14.replace("O", "6")
-    numero16 = numero15.replace("P", "7")
-    numero17 = numero16.replace("Q", "7")
-    numero18 = numero17.replace("R", "7")
-    numero19 = numero18.replace("S", "7")
-    numero20 = numero19.replace("T", "8")
-    numero21 = numero20.replace("U", "8")
-    numero22 = numero21.replace("V", "8")
-    numero23 = numero22.replace("W", "9")
-    numero24 = numero23.replace("X", "9")
-    numero25 = numero24.replace("Y", "9")
-    numero23 = numero25.replace("Z", "9")
-
-    return numero23
-
-def esCorrecto(cadena2):
-    cadena3 = cadena2
-    cadena4 = cadena2.title()
-    if cadena4 == cadena2:
-        return "True"
+def esCorrecto(nombre):
+    a=nombre.split()
+    p1=a[0]
+    p2=a[1]
+    p3=a[2]
+    p1s=p1[1:]
+    p2s=p2[1:]
+    p3s=p3[1:]
+    if p1[0].isupper() and p1s.islower() and p2[0].isupper() and p2s.islower() and p3[0].isupper() and p3s.islower():
+        a='true'
     else:
-        return "False"
+        a='false'
+    return a
 
 
 def formarNombreUsuario(nombre, apellido, matricula):
-    nombre2 = nombre[:3:]
-    apellido2 = apellido[0:3:]
-    matricula2 = matricula[5:len(matricula):]
-    usuario = nombre2 + apellido2 + matricula2
-    usuario2 = usuario.lower()
-    return usuario2
+    minusNombre=nombre.lower()
+    minusapellido=apellido.lower()
+    newnombre = minusNombre[:3]
+    newapellido = minusapellido[:3]
+    newM = str(matricula)
+    newmatricula1 = len(newM)
+    newmatricula1 -= 3
+    matriculanew = newM[newmatricula1:]
+    resultado=newnombre+newapellido+matriculanew
+
+    return resultado
 
 
 def contieneLasVocales(cadena):
-    cadena2 = cadena.lower()
-    if "a" in cadena2 and "e" in cadena2 and "i" in cadena2 and "o" in cadena2 and "u" in cadena2:
-        return "True"
+    newcadena=cadena.lower()
+    if 'a' in newcadena and 'e' in newcadena and 'i' in newcadena and 'o' in newcadena and 'u' in newcadena:
+        a='true'
     else:
-        return "False"
+        a='false'
+    return a
+
+def traducirTelefono(num):
+    n1 = num.replace("A", "2")
+    n2 = n1.replace("B", "2")
+    n3 = n2.replace("C", "2")
+    n4 = n3.replace("D", "3")
+    n5 = n4.replace("E", "3")
+    n6 = n5.replace("F", "3")
+    n7 = n6.replace("G", "4")
+    n8 = n7.replace("H", "4")
+    n9 = n8.replace("I", "4")
+    n10 = n9.replace("J", "5")
+    n11 = n10.replace("K", "5")
+    n12 = n11.replace("L", "5")
+    n13 = n12.replace("M", "6")
+    n14 = n13.replace("N", "6")
+    n15 = n14.replace("O", "6")
+    n16 = n15.replace("P", "7")
+    n17 = n16.replace("Q", "7")
+    n18 = n17.replace("R", "7")
+    n19 = n18.replace("S", "7")
+    n20 = n19.replace("T", "8")
+    n21 = n20.replace("U", "8")
+    n22 = n21.replace("V", "8")
+    n23 = n22.replace("W", "9")
+    n24 = n23.replace("X", "9")
+    n25 = n24.replace("Y", "9")
+    n23 = n25.replace("Z", "9")
+    return n23
 
 
 def main():
-    cadena = "Abuelito"
-    nombre = "Roberto"
-    apellido = "Martínez"
-    matricula = "12345678"
-    cadena2 = "Rafael Romero Bello"
-    numero = "01800-VOY-BIEN"
-    print(formarNombreUsuario(nombre, apellido, matricula))
-    print(contieneLasVocales(cadena))
-    print(esCorrecto(cadena2))
-    print(traducirTelefono(numero))
-    print(combinarLetras('hola mundo'))
-
+    print(combinarLetras('Hola Mundo'))
+    print(esCorrecto('Roberto Martinez Roman'))
+    print(formarNombreUsuario('Roberto', 'Martinez', 12345678))
+    print(traducirTelefono('1800-VOY-BIEN'))
+    print(contieneLasVocales('Abuelito'))
 
 main()
