@@ -18,7 +18,8 @@ def contieneLasVocales(cadena1):
     check = 0
     for letra in cadena1:
         if letra == "a" or letra == "A":
-            check = 1
+            if check==0:
+                check = 1
 
     for letra in cadena1:
         if letra == "e" or letra == "E":
@@ -37,7 +38,7 @@ def contieneLasVocales(cadena1):
 
     for letra in cadena1:
         if letra == "u" or letra == "U":
-            if check < 5:
+            if check < 5 and check > 3:
                 check = check + 1
 
     if check == 5:
@@ -48,7 +49,6 @@ def contieneLasVocales(cadena1):
 
 #Recibe parámetros para formar el nombre de un ausuario a partir de los tres primeros caracteres de cada parámetro
 def formarNombreUsuario(nombre, apellido, matricula):
-    iniciomat = len(matricula) -3
 
     n1 = nombre[0]
     n2 = nombre[1]
@@ -58,9 +58,11 @@ def formarNombreUsuario(nombre, apellido, matricula):
     a2 = apellido[1]
     a3 = apellido[2]
 
-    m1 = matricula[iniciomat]
-    m2 = matricula[iniciomat + 1]
-    m3 = matricula[iniciomat + 2]
+    nmat = matricula.__str__()
+
+    m1 = nmat[4]
+    m2 = nmat[5]
+    m3 = nmat[6]
 
     usuario = n1 + n2 + n3 + a1 + a2 + a3 + m1 + m2 + m3
     return usuario.lower()
@@ -196,7 +198,7 @@ def main():
 
     nombre= str(input("Tecla tu nombre: "))
     apellido= str(input("Teclea tu apellido paterno: "))
-    matricula= str(input("Teclea matrícula de 7 dígitos (únicamente números): "))
+    matricula= int(input("Teclea matrícula de 7 dígitos (únicamente números): "))
     print("Tu usuario es: " , formarNombreUsuario(nombre, apellido, matricula), "\n")
 
     cadena2 = str(input("Teclea nombre completo (Nombre, Apellido paterno, Apellido materno): "))
