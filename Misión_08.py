@@ -1,5 +1,7 @@
+# AQUI agregas tus funciones
 #Autor: Marianela Contreras Domínguez
 # Misión 8. Programa con funciones de cadenas
+
 
 #FUNCIÓN 1
 #función que recibe una cadena y regresa una con letras en mayúsculas y minúsculas
@@ -50,14 +52,15 @@ def contieneLasVocales(cadena):
 
 
 #FUNCIÓN3
-# función que recibe tres parámetros: nombre, apellido paterno y matrícula. Regresa un nombre de usuario
-def formarNombreUsuario(nombre, apellidoPaterno, matrícula):
-  nombreletras = nombre[0:3:1]  # se toman los 3 primeros caractéres del nombre con un operador
-  apellidoletras = apellidoPaterno[0:3:1]  # se toman los tres primeros del apellido
-  matrículanúmeros = matrícula[5:8:1]  # se toman los últimos tres dígitos de la matrícula
-  nueva = nombreletras + apellidoletras + matrículanúmeros  # se suman las variables para crear el nombre de usuario
+#función que recibe tres parámetros: nombre, apellido paterno y matrícula. Regresa un nombre de usuario
+def formarNombreUsuario(nombre, apellidoPaterno,matrícula):
+    nuevaMatrícula = matrícula % 1000 #con el módulo separamos los 3 últimos números
+    nombreletras = nombre[0:3:] #se toman los 3 primeros caractéres del nombre con un operador
+    apellidoletras= apellidoPaterno[0:3:]  #se toman los tres primeros del apellido
 
-  print(nueva.lower())  # se imprimen en minúscula
+
+    nueva= nombreletras+apellidoletras+ str (nuevaMatrícula)  #se suman las variables para crear el nombre de usuario
+    return nueva.lower()
 
 
 #FUNCIÓN 4
@@ -89,9 +92,11 @@ def esCorrecto(cadena):
 
     #se verifica si las iniciales son mayúsculas y el resto son minúsculas
     if iniciales.isupper()and letrasRestantes.islower():
-        print ("True")
+
+        return True
     else:
-        print ("False")
+
+        return False
 
 
 #FUNCIÓN 5
@@ -226,77 +231,6 @@ def traducirTelefono(númeroTel):
     return traducción
 
 
-#FUNCIÓN 6
-#función que recibe un password y si es correcta regresa True, sino False
-def esValido(password):
-    status = False #declarar que el estatus es falso para entrar a while
-    while status == False:
-        status1 = False #como aún no hay password, todos los substatus están en False, y los contadores en 0
-        status2 = False
-        status3 = False
-        status4 = False
-        contador1 = 0
-        contador2 = 0
-        contador3 = 0
-        contador4 = 0
-
-
-        if len(password) >= 8:  #verificca que tenga 8 caráctereres o más
-            status1 = True
-
-        if password[0].isalpha()==True:  #verificar que el primer índice es letra
-            status2 = True
-
-        for caracter in password:   # verifica cada carácter
-            if caracter.islower()==True:  #si el carácter es minúscula, se suma 1
-                contador1 +=1
-            elif caracter.isupper()==True:  #si el carácter es mayúscula se suma 1
-                contador2 +=1
-            elif caracter.isdigit()==True:  # si hay un número se suma 1
-                contador3 += 1
-            elif caracter.isalnum()==False: #si no es alfanumérico entonces tiene un carácter especial, se suma 1
-                contador4 += 1
-
-        #si todos los contadores tienen al menos 1, se cumple el status 3
-        if contador1 != 0 and contador2 != 0 and contador3 != 0 and contador4 != 0:
-            status3 = True
-
-
-        sub = False #varibale para ver si se cumple la condición o no
-        x = 0 #numero de índice
-        error = 0 #se usará como contador
-        while sub == False:
-            if x+1 == len(password):
-                sub = True
-            else:
-                if password[x].isdigit()==True and password[x+1].isdigit()==True: #si el caracter x es número y el siguinte es número es True
-                        result = int(password[x+1])-int(password[x]) #si la resta de los dos es 1 significa que son consecutivos
-                        if result != 1:
-                            error += 1
-            x += 1
-        if error != 0:
-            status4 = True
-        else:
-            status4 = False  #si es false significa que si son consecutivos
-
-
-        if status1 == True and status2 == True and status3 == True and status4 == True:
-            status = True #si los estatus son True, entonces es válido
-            print("Valid password")
-        else:
-            print("Not a valid password because: ")
-            if status1 == False:
-                print("Not the right lenght")
-            if status2 == False:
-                print("It does not begin with a letter")
-            if status3 == False:
-                print("Does not contain upper, lower, number or special character")
-            if status4 == False:
-                print("It contains consecutive numbers")
-            status = False
-            break
-
-
 #Función principal del programa y la que correrá
 def main():
   #función 1
@@ -309,19 +243,17 @@ def main():
   #función 3
   nombre = input("Tecela tu nombre:")
   apellidoPaterno = input("Tecela tu apellido paterno:")
-  matrícula = input("Tecela tu matrícula (sin A0):")
-  formarNombreUsuario(nombre, apellidoPaterno, matrícula)
+  matrícula = int(input("Tecela tu matrícula (sin A0):"))
+  nueva = formarNombreUsuario(nombre, apellidoPaterno, matrícula)
+  print(nueva.lower())  # se imprimen en minúscula
   #función 4
   cadena = input("Teclea tu nombre completo:")
-  esCorrecto(cadena)
+  if esCorrecto(cadena) == True:
+      print("True, es correcto")
+  else:
+      print("False, es incorrecto")
   #Función 5
   númeroTel = input("Escribe un número telefónico: ")
   traducción = traducirTelefono(númeroTel)
   print(traducción)
-  #función 6
-  password = input("Type a new passord: ")
-  esValido(password)
-
 main()
-
-
