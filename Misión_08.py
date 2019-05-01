@@ -1,4 +1,4 @@
-# Autor: Rosalía Serrano Herrera
+ # Autor: Rosalía Serrano Herrera
 # Ejercicios de cadenas
 
 def combinarLetras(cadenaCombinados):
@@ -9,24 +9,27 @@ def combinarLetras(cadenaCombinados):
         if contador == 1:
             letra = palabra.upper()
             combinada = combinada + letra
-            contador =- contador
+            contador = - contador
         else:
             letra = palabra.lower()
             combinada = combinada + letra
-            contador =- contador
+            contador = - contador
 
-    print(combinada)
+    return combinada
 
 
 def contieneLasVocales(cadenaVocales):
-    cadenaVocales.lower()
-    vocales = ["a" and "e" and "i" and "o" and "u"]
+    palabra = cadenaVocales.lower()
+    a = "a"
+    e = "e"
+    i = "i"
+    o = "o"
+    u = "u"
 
-    for palabra in vocales:
-        if palabra in cadenaVocales:
-            return True
-        else:
-            return False
+    if a in palabra and e in palabra and i in palabra and o in palabra and u in palabra:
+        return True
+    else:
+        return False
 
 
 def formarNombreUsuario(nombre, apellido, matricula):
@@ -64,7 +67,7 @@ def traducirTelefono(numeroTelefonico):
     tres = ["D", "E", "F"]
     cuatro = ["G", "H", "I"]
     cinco = ["J", "K", "L"]
-    seis =["M", "N", "O"]
+    seis = ["M", "N", "O"]
     siete = ["P", "Q", "R", "S"]
     ocho = ["T", "U", "V"]
     nueve = ["W", "X", "Y", "Z"]
@@ -103,36 +106,9 @@ def traducirTelefono(numeroTelefonico):
     return numeroNuevo
 
 
-def esValido(password):
-    resultado = 0
-
-    if len(password)>=8:
-        resultado += 1
-
-    for caracter in password:
-        if caracter.isupper():
-            resultado += 1
-        elif caracter.islower():
-            resultado += 1
-
-    if password.isalnum():
-        resultado += 1
-
-    if password.isalpha():
-        resultado += 1
-
-    if password[:1].isalpha():
-        resultado += 1
-
-    if resultado == 6:
-        return True
-    else:
-        return False
-
-
 def main():
     cadenaCombinados = input("Escribe alguna cadena: ")
-    combinarLetras(cadenaCombinados)
+    print(combinarLetras(cadenaCombinados))
 
     cadenaVocales = input("Ingresa una cadena: ")
     print(contieneLasVocales(cadenaVocales))
@@ -145,11 +121,8 @@ def main():
     nombrePersona = input("Escribe un nombre con apellidos: ")
     print(esCorrecto(nombrePersona))
 
-    numeroTelefonico = input("Ingrea un número de teléfono en formato 01800-XXX-XXXX: " )
+    numeroTelefonico = input("Ingrea un número de teléfono en formato 01800-XXX-XXXX: ")
     print(traducirTelefono(numeroTelefonico))
-
-    password = input("Teclea un password: ")
-    print(esValido(password))
 
 
 main()
